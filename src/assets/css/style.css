@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu:wght@300&display=swap');
+
+:root {
+    --border-color: #c8d6e5;
+    --font-color: #2c3a47;
+    --sub-font-color: #7f8fa6;
+    --main-color: #1dd1a1;
+    --hover-color: #76d6bc;
+    --accent-color: #ff7675;
+}
+
+.hide {
+    display: none;
+}
+
+.wrap {
+    position: relative;
+}
+
+html {
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif !important;
+    max-width: 100vw;
+}
