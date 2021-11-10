@@ -10,6 +10,9 @@
                     <button type="button" class="logout-button">Logout</button>
                 </div>
             </div>
+            <div class="calendar-wrap">
+                <v-calendar is-expanded color="green" :attributes="attrs" />
+            </div>
             <ul class="board-list">
                 <li>
                     <a href="#">
@@ -110,7 +113,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            attrs: [
+                {
+                    key: 'today',
+                    highlight: true,
+                    dates: new Date()
+                }
+            ]
+        };
+    }
+};
 </script>
 
 <style scoped>
@@ -126,6 +141,13 @@ main {
     max-width: 90%;
     min-height: 100vh;
     margin: 1rem auto;
+}
+
+/* calendar */
+.calendar-wrap {
+    margin-top: 2.4rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.8rem;
 }
 
 /* top */
