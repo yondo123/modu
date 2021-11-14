@@ -1,5 +1,5 @@
 <template>
-    <h2>MDPost.vue</h2>
+    <h2>MDPostWrite.vue</h2>
 </template>
 
 <script>
