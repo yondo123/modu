@@ -2,9 +2,28 @@
     <div class="left-wrap md:col-span-3 lg:col-span-2">
         <header>
             <h2>
-                <a href="#" class="modu">MoDU</a>
+                <router-link to="/" class="modu">MoDU </router-link>
             </h2>
-            <button class="menu-button">
+
+            <button class="menu-button" v-if="this.menuOpen" v-on:click="toggleMenu">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-chevrons-up"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#1dd1a1"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" x-show="open" />
+                    <polyline points="7 11 12 6 17 11" />
+                    <polyline points="7 17 12 12 17 17" />
+                </svg>
+            </button>
+            <button class="close-button" v-else v-on:click="toggleMenu">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon icon-tabler icon-tabler-menu-2"
@@ -23,26 +42,8 @@
                     <line x1="4" y1="18" x2="20" y2="18" />
                 </svg>
             </button>
-            <button class="close-button hide">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-chevrons-up"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="#1dd1a1"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" x-show="open" />
-                    <polyline points="7 11 12 6 17 11" />
-                    <polyline points="7 17 12 12 17 17" />
-                </svg>
-            </button>
         </header>
-        <nav class="hide">
+        <nav v-bind:class="{hide: this.$store.state.style.mobile && !this.menuOpen}">
             <ul>
                 <li class="selected-menu">
                     <a href="#">게시판 Sample</a>
@@ -59,7 +60,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            menuOpen: false
+        };
+    },
+    methods: {
+        toggleMenu() {
+            return (this.menuOpen = !this.menuOpen);
+        }
+    }
+};
 </script>
 
 <style scoped>
@@ -69,6 +81,7 @@ export default {};
 }
 
 .left-wrap {
+    background: #fff;
     display: flex;
     width: 100vw;
     flex-direction: column;
