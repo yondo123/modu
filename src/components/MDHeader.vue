@@ -2,7 +2,7 @@
     <div class="left-wrap md:col-span-3 lg:col-span-2">
         <header>
             <h2>
-                <a href="#">MoDU</a>
+                <a href="#" class="modu">MoDU</a>
             </h2>
             <button class="menu-button">
                 <svg
