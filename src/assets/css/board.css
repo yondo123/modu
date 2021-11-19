@@ -24,13 +24,13 @@ main {
 }
 
 .login-button {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 0.6rem 0.4rem;
     background-color: var(--main-color);
     color: #fff;
     font-size: 1.4rem;
     border: 0.1rem solid var(--border-color);
-    border-radius: 0.8rem;
+    border-radius: 7px;
     font-weight: bold;
 }
 
@@ -73,15 +73,15 @@ main {
 }
 
 .board-list {
-    margin-top: 2.4rem;
-    color: var(--font-color);
+    margin-top: 4ream;
 }
 
 .board-list li {
-    margin-top: 1.2rem;
-    padding: 1rem;
-    border: 0.2rem solid var(--border-color);
-    border-radius: 0.8rem;
+    margin-top: 1.5rem;
+    padding: 2rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 7px;
+    box-shadow: 10px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .board-list li a {
@@ -91,14 +91,14 @@ main {
 
 .profile > img {
     display: block;
-    width: 4em;
-    height: 4rem;
+    width: 5em;
+    height: 5rem;
     border: 0.1rem solid var(--border-color);
     border-radius: 50%;
 }
 
 .post {
-    margin-left: 6.25%;
+    margin-left: 6%;
     max-width: 70%;
 }
 
@@ -110,10 +110,11 @@ main {
 }
 
 .post-content {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 2rem;
     margin-bottom: 0.2rem;
 }
 
@@ -167,6 +168,7 @@ main {
         width: 5em;
         height: 5rem;
         margin-left: 40%;
+        opacity: 50%;
     }
 
     .post {
@@ -185,14 +187,14 @@ main {
 /* desktop */
 @media screen and (min-width: 1280px) {
     .profile > img {
-        margin-left: 50%;
+        margin-left: 45%;
     }
 }
 
 /* desktop-xl */
 @media screen and (min-width: 1536px) {
     .profile > img {
-        margin-left: 70%;
+        margin-left: 45%;
     }
     .post {
         max-width: 86%;

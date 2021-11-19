@@ -17,15 +17,11 @@
                             <img src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
+                            <strong class="post-title">제목</strong>
                             <p class="post-content">
                                 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수
                                 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수
                             </p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">abcdefghijk</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
                         </div>
                     </a>
                 </li>
@@ -35,12 +31,8 @@
                             <img src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
+                            <strong class="post-title">제목</strong>
                             <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
                         </div>
                     </a>
                 </li>
@@ -50,12 +42,8 @@
                             <img src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
+                            <strong class="post-title">제목</strong>
                             <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
                         </div>
                     </a>
                 </li>
@@ -65,12 +53,8 @@
                             <img src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
+                            <strong class="post-title">제목</strong>
                             <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
                         </div>
                     </a>
                 </li>
@@ -80,12 +64,8 @@
                             <img src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
+                            <strong class="post-title">제목</strong>
                             <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
                         </div>
                     </a>
                 </li>
@@ -95,72 +75,8 @@
                             <img src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
+                            <strong class="post-title">제목</strong>
                             <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">스터디 모집 제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                            <div class="post-info">
-                                <p class="post-writer sub-font">admin</p>
-                                <p class="post-date sub-font">2021. 10. 27</p>
-                            </div>
                         </div>
                     </a>
                 </li>

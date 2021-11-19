@@ -2,7 +2,7 @@
     <div class="left-wrap md:col-span-3 lg:col-span-2">
         <header>
             <h2>
-                <a href="#">modu study</a>
+                <a href="#" class="modu">MoDU</a>
             </h2>
             <button class="menu-button">
                 <svg
@@ -63,8 +63,12 @@ export default {};
 </script>
 
 <style scoped>
+.modu {
+    font-family: 'Mochiy Pop P One', sans-serif;
+    max-width: 100vw;
+}
+
 .left-wrap {
-    background-color: #fff;
     display: flex;
     width: 100vw;
     flex-direction: column;
@@ -83,17 +87,18 @@ export default {};
 }
 
 .left-wrap > header > h2 > a {
-    font-size: 1.8rem;
+    font-size: 4rem;
     font-weight: bold;
     color: var(--main-color);
+    text-align: center;
 }
 
 .left-wrap > .open {
     display: block;
 }
+
 .selected-menu {
     font-weight: bold;
-    background-color: var(--hover-color);
     opacity: 0.8;
     border: 0.1rem solid #fff;
     border-radius: 0.8rem;
@@ -101,7 +106,6 @@ export default {};
 
 .menu-button,
 .close-button {
-    background-color: #fff;
     border-style: none;
 }
 
@@ -128,6 +132,14 @@ export default {};
 
 /* laptop */
 @media screen and (min-width: 1024px) {
+    .left-wrap > header {
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .menu-button {
+        display: none;
+    }
+
     .left-wrap {
         border-right: 0.1rem solid var(--border-color);
         position: initial;
@@ -148,7 +160,6 @@ export default {};
 
     .left-wrap ul li:hover {
         font-weight: bold;
-        background-color: var(--hover-color);
         opacity: 0.8;
         border: 0.1rem solid #fff;
         border-radius: 0.8rem;
