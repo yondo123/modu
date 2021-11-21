@@ -46,13 +46,10 @@
         <nav v-bind:class="{hide: this.$store.state.style.mobile && !this.menuOpen}">
             <ul>
                 <li class="selected-menu">
-                    <a href="#">게시판 Sample</a>
+                    <a href="#"><i class="far fa-handshake fa-2x"></i> &nbsp;스터디 모집</a>
                 </li>
                 <li>
-                    <a href="#">게시판 Sample</a>
-                </li>
-                <li>
-                    <a href="#">게시판 Sample</a>
+                    <a href="#"><i class="fas fa-users fa-2x"></i> &nbsp;자유 게시판</a>
                 </li>
             </ul>
         </nav>
@@ -124,7 +121,7 @@ export default {
 
 /* nav */
 .left-wrap > nav {
-    padding: 0 1.6rem 1.6rem 1.6rem;
+    padding: 4rem 1.6rem 1.6rem 1.6rem;
     -webkit-box-shadow: 2px 6px 7px -5px rgba(0, 0, 0, 0.71);
     -moz-box-shadow: 2px 6px 7px -5px rgba(0, 0, 0, 0.71);
     box-shadow: 2px 6px 7px -5px rgba(0, 0, 0, 0.71);
