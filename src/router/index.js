@@ -22,14 +22,14 @@ const routes = [
         component: MDBoard
     },
     {
+        //게시글 작성
+        path: '/board/:id/write',
+        component: MDPostWrite
+    },
+    {
         //게시글 상세
         path: '/post/:id',
         component: MDPost
-    },
-    {
-        //게시글 작성
-        path: '/post/:id/write',
-        component: MDPostWrite
     },
     {
         //스터디 일정
