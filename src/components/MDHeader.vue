@@ -46,10 +46,10 @@
         <nav v-bind:class="{hide: this.$store.state.style.mobile && !this.menuOpen}">
             <ul>
                 <li class="selected-menu">
-                    <a href="#"><i class="far fa-handshake fa-2x"></i> &nbsp;스터디 모집</a>
+                    <a href="#"><i class="far fa-paper-plane"></i> &nbsp;스터디 모집</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-users fa-2x"></i> &nbsp;자유 게시판</a>
+                    <a href="#"><i class="far fa-comments"></i> &nbsp;자유 게시판</a>
                 </li>
             </ul>
         </nav>
@@ -107,13 +107,6 @@ export default {
     display: block;
 }
 
-.selected-menu {
-    font-weight: bold;
-    opacity: 0.8;
-    border: 0.1rem solid #fff;
-    border-radius: 0.8rem;
-}
-
 .menu-button,
 .close-button {
     border-style: none;
@@ -121,7 +114,7 @@ export default {
 
 /* nav */
 .left-wrap > nav {
-    padding: 4rem 1.6rem 1.6rem 1.6rem;
+    padding: 1.6rem;
     -webkit-box-shadow: 2px 6px 7px -5px rgba(0, 0, 0, 0.71);
     -moz-box-shadow: 2px 6px 7px -5px rgba(0, 0, 0, 0.71);
     box-shadow: 2px 6px 7px -5px rgba(0, 0, 0, 0.71);
@@ -135,9 +128,19 @@ export default {
 
 .left-wrap ul li a {
     height: 2rem;
-    color: var(--font-color);
+    color: var(--sub-font-color);
     font-size: 1.4rem;
-    font-weight: 400;
+}
+
+.selected-menu {
+    opacity: 0.8;
+    border: 0.1rem solid #fff;
+    border-radius: 0.8rem;
+}
+
+.selected-menu > a {
+    color: var(--font-color) !important;
+    font-weight: bold !important;
 }
 
 /* laptop */
