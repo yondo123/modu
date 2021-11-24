@@ -24,7 +24,6 @@ main {
 }
 
 .green-button {
-    margin-top: 2rem;
     padding: 0.6rem 0.4rem;
     background-color: var(--main-color);
     color: #fff;

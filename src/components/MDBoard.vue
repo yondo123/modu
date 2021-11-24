@@ -100,7 +100,7 @@
                 </ul>
             </div>
             <div class="button-wrap">
-                <button type="button" class="green-button">글쓰기</button>
+                <button type="button" class="green-button write-button">글쓰기</button>
             </div>
         </main>
     </div>
@@ -133,5 +133,9 @@ main {
     position: absolute;
     right: 0.1rem;
     margin: 1.5rem 0;
+}
+
+.write-button {
+    margin-top: 2rem;
 }
 </style>
