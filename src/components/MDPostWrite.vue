@@ -24,9 +24,6 @@ import {ref, onMounted} from 'vue';
 const edtior = ref(null);
 
 onMounted(() => {
-    console.log('onMounted');
-
-    console.log('====' + edtior.value);
     const toastEditor = new Editor({
         el: edtior.value,
         height: '720px',
