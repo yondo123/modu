@@ -7,7 +7,7 @@
                 <li>
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
                             <strong class="post-title">제목</strong>
@@ -21,7 +21,7 @@
                 <li>
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
                             <strong class="post-title">제목</strong>
@@ -32,7 +32,7 @@
                 <li>
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
                             <strong class="post-title">제목</strong>
@@ -43,7 +43,7 @@
                 <li>
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
                             <strong class="post-title">제목</strong>
@@ -54,7 +54,7 @@
                 <li>
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
                             <strong class="post-title">제목</strong>
@@ -65,7 +65,7 @@
                 <li>
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
                         </div>
                         <div class="post">
                             <strong class="post-title">제목</strong>
@@ -115,7 +115,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url('../assets/css/board.css');
 
 main {

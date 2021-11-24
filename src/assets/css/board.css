@@ -90,8 +90,8 @@ main {
 
 .profile > img {
     display: block;
-    width: 5em;
-    height: 5rem;
+    width: 2.4em;
+    height: 2.4rem;
     border: 0.1rem solid var(--border-color);
     border-radius: 50%;
 }
@@ -136,6 +136,12 @@ main {
     color: var(--sub-font-color);
 }
 
+/* 게시판 프로필 이미지 */
+.board-icon {
+    width: 5rem !important;
+    height: 5rem !important;
+}
+
 /* laptop */
 @media screen and (min-width: 1024px) {
     .menu-button,
@@ -164,8 +170,8 @@ main {
     }
 
     .profile > img {
-        width: 5em;
-        height: 5rem;
+        width: 3.2em;
+        height: 3.2rem;
         margin-left: 40%;
         opacity: 50%;
     }

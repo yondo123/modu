@@ -33,7 +33,7 @@ onMounted(() => {
     toastEditor.getMarkdown();
 });
 </script>
-<style>
+<style scoped>
 @import url('../assets/css/board.css');
 .post-header {
     display: flex;
