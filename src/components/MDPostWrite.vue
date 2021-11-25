@@ -10,7 +10,7 @@
             <div ref="edtior" class="editor-wrap"></div>
             <div class="post-button-wrap">
                 <button type="button" class="green-button">취소</button>
-                <button type="button" class="green-button">글쓰기</button>
+                <button type="button" class="green-button" v-on:click="getHtmlSource">글쓰기</button>
             </div>
         </main>
     </div>
@@ -21,10 +21,15 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import Editor from '@toast-ui/editor';
 import {ref, onMounted} from 'vue';
 
+let toastEditor;
 const edtior = ref(null);
 
+function getHtmlSource() {
+    console.log(toastEditor.getHTML());
+}
+
 onMounted(() => {
-    const toastEditor = new Editor({
+    toastEditor = new Editor({
         el: edtior.value,
         height: '720px',
         initialEditType: 'wysiwyg',
@@ -35,6 +40,10 @@ onMounted(() => {
 </script>
 <style scoped>
 @import url('../assets/css/board.css');
+
+main {
+    position: relative;
+}
 .post-header {
     display: flex;
     font-size: 1.6rem;
@@ -68,6 +77,7 @@ onMounted(() => {
 .post-button-wrap {
     position: absolute;
     right: 0.1rem;
+    margin-top: 2.5rem;
 }
 
 .post-button-wrap button {
@@ -76,6 +86,10 @@ onMounted(() => {
 
 /* laptop */
 @media screen and (min-width: 1024px) {
+    .post-button-wrap {
+        margin-top: 1.5rem;
+    }
+
     .post-header > input {
         width: 48rem;
     }
