@@ -13,6 +13,7 @@
                 <div class="post-content ProseMirror toastui-editor-contents" v-html="contentSource"></div>
                 <div class="post-comments">
                     <MDComment />
+                    <MDCommentWrite />
                 </div>
             </div>
         </main>
@@ -23,6 +24,7 @@
 import '@toast-ui/editor/dist/toastui-editor.css';
 import MDProfile from '../components/MDProfile.vue';
 import MDComment from '../components/MDComment.vue';
+import MDCommentWrite from '../components/MDCommentWrite.vue';
 export default {
     data() {
         return {
@@ -31,7 +33,8 @@ export default {
     },
     components: {
         MDProfile,
-        MDComment
+        MDComment,
+        MDCommentWrite
     },
     created() {
         this.contentSource = `<h3>강남역 스터디 모집</h3><p><br class="ProseMirror-trailingBreak"></p><p>무조건 약속 잘 지키시는 분만 환영합니다. </p><p><strong>철새 금지</strong></p><p><br class="ProseMirror-trailingBreak"></p><ul><li class="task-list-item checked" data-task="true" data-task-checked="true"><p>체크리스트 테스트</p></li></ul><blockquote><p>인용문구 테스트</p></blockquote><p><br class="ProseMirror-trailingBreak"></p><table><thead><tr><th><p>테이블 테스트</p></th><th><p>테이블 테스트2</p></th></tr></thead><tbody><tr><td><p>test</p></td><td><p>test</p></td></tr></tbody></table>`;
