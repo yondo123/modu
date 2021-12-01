@@ -75,29 +75,7 @@
                 </li>
             </ul>
             <div class="pagination-wrap">
-                <ul class="flex pl-0 list-none rounded my-3">
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 border-r-0 ml-0 rounded-l hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-xl" href="#">이전</a>
-                    </li>
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 border-r-0 hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-xl" href="#">1</a>
-                    </li>
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 border-r-0 hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-xl" href="#">2</a>
-                    </li>
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 border-r-0 hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-xl" href="#">3</a>
-                    </li>
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 border-r-0 hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-2xl" href="#">4</a>
-                    </li>
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 border-r-0 hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-xl" href="#">5</a>
-                    </li>
-                    <li class="relative block py-3 px-2 md:px-3 leading-tight opacity-100 border border-gray-300 text-green-500 rounded-r hover:bg-gray-200">
-                        <a class="page-link lg:text-2xl text-xl" href="#">다음</a>
-                    </li>
-                </ul>
+                <VPagenation v-model="currentPage" :pages="21" :range-size="1" active-color="#FF7675" @update:modelValue="movePage" />
             </div>
             <div class="button-wrap">
                 <button type="button" class="green-button write-button">글쓰기</button>
@@ -107,10 +85,23 @@
 </template>
 
 <script>
+import VPagenation from '@hennge/vue3-pagination';
+import '@hennge/vue3-pagination/dist/vue3-pagination.css';
 import MDProfile from '../components/MDProfile.vue';
 export default {
+    data() {
+        return {
+            currentPage: 3
+        };
+    },
     components: {
-        MDProfile
+        MDProfile,
+        VPagenation
+    },
+    methods: {
+        movePage(page) {
+            alert(page);
+        }
     }
 };
 </script>
@@ -123,16 +114,21 @@ main {
 }
 
 .pagination-wrap {
+    margin-top: 2.5rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
 }
 
+.Pagination {
+    flex-wrap: nowrap;
+}
+
 .button-wrap {
     position: absolute;
     right: 0.1rem;
-    margin: 1.5rem 0;
+    margin: 4rem 0;
 }
 
 .write-button {
