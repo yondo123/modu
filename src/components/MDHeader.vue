@@ -43,13 +43,12 @@
                 </svg>
             </button>
         </header>
+
         <nav v-bind:class="{hide: this.$store.state.style.mobile && !this.menuOpen}">
             <ul>
-                <li class="selected-menu">
-                    <a href="#"><i class="far fa-paper-plane"></i> &nbsp;스터디 모집</a>
-                </li>
-                <li>
-                    <a href="#"><i class="far fa-comments"></i> &nbsp;자유 게시판</a>
+                <!-- selected-menu -->
+                <li v-for="(item, index) in this.menuList" :key="index">
+                    <a href="#"><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</a>
                 </li>
             </ul>
         </nav>
@@ -57,16 +56,35 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
     data() {
         return {
             menuOpen: false
         };
     },
+    computed: {
+        ...mapGetters('style', {menuList: 'getMenuList'})
+    },
     methods: {
         toggleMenu() {
             return (this.menuOpen = !this.menuOpen);
+        },
+        menuIcon(catId) {
+            let iconClass = '';
+            switch (catId) {
+                case 'CAT0001':
+                    iconClass = 'fa-comments';
+                    break;
+                case 'CAT0002':
+                    iconClass = 'fa-paper-plane';
+                    break;
+            }
+            return iconClass;
         }
+    },
+    created() {
+        this.$store.dispatch('style/requestMenuList');
     }
 };
 </script>
