@@ -4,85 +4,78 @@
             <!-- signed -> 로그인, unsign -> 비 로그인 -->
             <MDProfile></MDProfile>
             <ul class="board-list">
-                <li>
+                <li v-for="(item, index) in this.boardList" :key="index">
                     <a href="#">
                         <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
+                            <img v-bind:src="item.profileUrl" v-bind:art="item.writer" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">
-                                길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수
-                                길어질 경우 말줄임 필수 길어질 경우 말줄임 필수
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
+                            <strong class="post-title">{{ item.title }}</strong>
+                            <p class="post-content">{{ item.content }}</p>
                         </div>
                     </a>
                 </li>
             </ul>
+            <InfiniteLoading @infinite="infiniteHandler" />
         </main>
     </div>
 </template>
 
 <script>
+import InfiniteLoading from 'vue-infinite-loading';
 import MDProfile from '../components/MDProfile.vue';
+import {mapGetters} from 'vuex';
 export default {
+    data() {
+        return {
+            page: 1
+        };
+    },
+    computed: {
+        ...mapGetters('board', {boardList: 'getBoardList'})
+    },
     components: {
-        MDProfile
+        MDProfile,
+        InfiniteLoading
+    },
+    methods: {
+        // infiniteHandler($state) {
+        //     if (this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount) {
+        //         this.page += 1;
+        //         this.$store.dispatch('board/requestBoardList', {
+        //             catId: 'CAT0001',
+        //             page: this.page
+        //         });
+        //         $state.loaded();
+        //     } else {
+        //         $state.complete();
+        //     }
+        // this.$store.dispatch('board/requestBoardList', {
+        //     catId: 'CAT0001',
+        //     page: this.page
+        // });
+        // axios
+        //     .get(api, {
+        //         params: {
+        //             page: this.page
+        //         }
+        //     })
+        //     .then(({data}) => {
+        //         if (data.hits.length) {
+        //             this.page += 1;
+        //             this.list.push(...data.hits);
+        //             $state.loaded();
+        //         } else {
+        //             $state.complete();
+        //         }
+        //     });
+        // }
+    },
+    created() {
+        this.$store.dispatch('board/requestBoardList', {
+            catId: 'CAT0001',
+            page: this.page
+        });
     }
 };
 </script>
