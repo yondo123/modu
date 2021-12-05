@@ -16,7 +16,7 @@
                     </a>
                 </li>
             </ul>
-            <InfiniteLoading @infinite="infiniteHandler" />
+            <InfiniteLoading @infinite="infiniteHandler" spinner="bubbles" />
         </main>
     </div>
 </template>
@@ -24,16 +24,17 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
 import MDProfile from '../components/MDProfile.vue';
-import {mapGetters} from 'vuex';
+// import {mapGetters} from 'vuex';
 export default {
     data() {
         return {
-            page: 1
+            page: 1,
+            boardList: []
         };
     },
-    computed: {
-        ...mapGetters('board', {boardList: 'getBoardList'})
-    },
+    // computed: {
+    //     ...mapGetters('board', {boardList: 'getBoardList'})
+    // },
     components: {
         MDProfile,
         InfiniteLoading
@@ -41,19 +42,24 @@ export default {
     methods: {
         // infiniteHandler($state) {
         //     if (this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount) {
-        //         this.page += 1;
-        //         this.$store.dispatch('board/requestBoardList', {
-        //             catId: 'CAT0001',
-        //             page: this.page
-        //         });
         //         $state.loaded();
         //     } else {
-        //         $state.complete();
+        //         $state.compete();
         //     }
-        // this.$store.dispatch('board/requestBoardList', {
-        //     catId: 'CAT0001',
-        //     page: this.page
-        // });
+        // }
+        infiniteHandler($state) {
+            alert(this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount);
+            if (this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount) {
+                this.page += 1;
+                this.$store.dispatch('board/requestBoardList', {
+                    catId: 'CAT0001',
+                    page: this.page
+                });
+                $state.loaded();
+            } else {
+                $state.complete();
+            }
+        }
         // axios
         //     .get(api, {
         //         params: {

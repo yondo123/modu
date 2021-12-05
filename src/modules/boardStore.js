@@ -20,7 +20,7 @@ const actions = {
     requestBoardList(state, boardInfo) {
         getBoardList({
             ...boardInfo,
-            count: 8
+            count: 15
         }).then(function (response) {
             state.commit('setBoardList', response.data);
         });
