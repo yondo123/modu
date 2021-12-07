@@ -48,7 +48,7 @@
             <ul>
                 <!-- selected-menu -->
                 <li v-for="(item, index) in this.menuList" :key="index">
-                    <a href="#"><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</a>
+                    <router-link v-bind:to="`/board/${item.catId}`"><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</router-link>
                 </li>
             </ul>
         </nav>
@@ -156,8 +156,8 @@ export default {
     border-radius: 0.8rem;
 }
 
-.selected-menu > a {
-    color: var(--font-color) !important;
+.router-link-active {
+    color: var(--main-color) !important;
     font-weight: bold !important;
 }
 

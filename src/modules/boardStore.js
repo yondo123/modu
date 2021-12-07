@@ -7,6 +7,9 @@ const state = {
 const getters = {
     getBoardList(state) {
         return state.boardList;
+    },
+    getBoardLimit(state) {
+        return state.boardLimitCount;
     }
 };
 const mutations = {
@@ -20,7 +23,7 @@ const actions = {
     requestBoardList(state, boardInfo) {
         getBoardList({
             ...boardInfo,
-            count: 15
+            count: 6
         }).then(function (response) {
             state.commit('setBoardList', response.data);
         });

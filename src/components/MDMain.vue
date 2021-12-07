@@ -16,7 +16,7 @@
                     </a>
                 </li>
             </ul>
-            <InfiniteLoading @infinite="infiniteHandler" spinner="bubbles" />
+            <infinite-loading @infinite="infiniteHandler" spinner="waveDots"></infinite-loading>
         </main>
     </div>
 </template>
@@ -24,65 +24,39 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
 import MDProfile from '../components/MDProfile.vue';
-// import {mapGetters} from 'vuex';
+import {mapGetters} from 'vuex';
 export default {
     data() {
         return {
-            page: 1,
-            boardList: []
+            page: 1
         };
     },
-    // computed: {
-    //     ...mapGetters('board', {boardList: 'getBoardList'})
-    // },
+    computed: {
+        ...mapGetters('board', {boardList: 'getBoardList'})
+    },
     components: {
         MDProfile,
         InfiniteLoading
     },
     methods: {
-        // infiniteHandler($state) {
-        //     if (this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount) {
-        //         $state.loaded();
-        //     } else {
-        //         $state.compete();
-        //     }
-        // }
-        infiniteHandler($state) {
-            alert(this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount);
-            if (this.$store.state.board.boardList.length <= this.$store.state.board.boardLimitCount) {
-                this.page += 1;
+        infiniteHandler() {
+            setTimeout(() => {
                 this.$store.dispatch('board/requestBoardList', {
                     catId: 'CAT0001',
                     page: this.page
                 });
-                $state.loaded();
-            } else {
-                $state.complete();
-            }
+            }, 1000);
+        },
+        handleScroll(el) {
+            console.log(el);
         }
-        // axios
-        //     .get(api, {
-        //         params: {
-        //             page: this.page
-        //         }
-        //     })
-        //     .then(({data}) => {
-        //         if (data.hits.length) {
-        //             this.page += 1;
-        //             this.list.push(...data.hits);
-        //             $state.loaded();
-        //         } else {
-        //             $state.complete();
-        //         }
-        //     });
-        // }
-    },
-    created() {
-        this.$store.dispatch('board/requestBoardList', {
-            catId: 'CAT0001',
-            page: this.page
-        });
     }
+    // created() {
+    //     this.$store.dispatch('board/requestBoardList', {
+    //         catId: 'CAT0001',
+    //         page: this.page
+    //     });
+    // }
 };
 </script>
 

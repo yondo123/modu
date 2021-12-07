@@ -4,78 +4,20 @@
             <!-- signed -> 로그인, unsign -> 비 로그인 -->
             <MDProfile></MDProfile>
             <ul class="board-list">
-                <li>
+                <li v-for="(item, index) in this.boardList" :key="index">
                     <a href="#">
                         <div class="profile">
-                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
+                            <img v-bind:src="item.profileUrl" v-bind:art="item.writer" />
                         </div>
                         <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">
-                                길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수 길어질 경우 말줄임 필수
-                                길어질 경우 말줄임 필수 길어질 경우 말줄임 필수
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="profile">
-                            <img class="board-icon" src="../assets/logo.jpg" alt="user_id" />
-                        </div>
-                        <div class="post">
-                            <strong class="post-title">제목</strong>
-                            <p class="post-content">내용 내용 내용 내용 내용</p>
+                            <strong class="post-title">{{ item.title }}</strong>
+                            <p class="post-content">{{ item.content }}</p>
                         </div>
                     </a>
                 </li>
             </ul>
             <div class="pagination-wrap">
-                <VPagenation v-model="currentPage" :pages="21" :range-size="1" active-color="#FF7675" @update:modelValue="movePage" />
+                <VPagenation v-model="currentPage" :pages="`${Math.ceil(this.limit / this.perPage)}`" :range-size="1" active-color="#FF7675" @update:modelValue="movePage" />
             </div>
             <div class="button-wrap">
                 <button type="button" class="green-button write-button">글쓰기</button>
@@ -88,11 +30,17 @@
 import VPagenation from '@hennge/vue3-pagination';
 import '@hennge/vue3-pagination/dist/vue3-pagination.css';
 import MDProfile from '../components/MDProfile.vue';
+import {mapGetters} from 'vuex';
 export default {
     data() {
         return {
-            currentPage: 3
+            limitPage: 0,
+            currentPage: 1,
+            perPage: 6
         };
+    },
+    computed: {
+        ...mapGetters('board', {boardList: 'getBoardList', limit: 'getBoardLimit'})
     },
     components: {
         MDProfile,
@@ -100,8 +48,17 @@ export default {
     },
     methods: {
         movePage(page) {
-            alert(page);
+            return this.fetchBoardList(page);
+        },
+        fetchBoardList(page) {
+            this.$store.dispatch('board/requestBoardList', {
+                catId: this.$route.params.id,
+                page: page
+            });
         }
+    },
+    created() {
+        this.fetchBoardList(1);
     }
 };
 </script>

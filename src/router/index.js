@@ -23,7 +23,7 @@ const routes = [
     },
     {
         //게시글 작성
-        path: '/board/:id/write',
+        path: '/board/:boardId/write',
         component: MDPostWrite
     },
     {
