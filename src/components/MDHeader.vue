@@ -48,7 +48,7 @@
             <ul>
                 <!-- selected-menu -->
                 <li v-for="(item, index) in this.menuList" :key="index">
-                    <router-link v-bind:to="`/board/${item.catId}`"><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</router-link>
+                    <a v-bind:href="$router.resolve({name: 'board', params: {id: item.catId}}).href"><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</a>
                 </li>
             </ul>
         </nav>
