@@ -18,6 +18,7 @@ const routes = [
     },
     {
         //스터디 및 자유 게시판
+        name: 'board',
         path: '/board/:id',
         component: MDBoard
     },
@@ -28,6 +29,7 @@ const routes = [
     },
     {
         //게시글 상세
+        name: 'post',
         path: '/post/:id',
         component: MDPost
     },

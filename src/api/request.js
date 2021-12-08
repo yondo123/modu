@@ -24,4 +24,15 @@ const getBoardList = function (boardInfo) {
     });
 };
 
-export {getMenuList, getBoardList};
+/**
+ * 게시글 상세 조회
+ * @param {string} postId : 글 번호
+ */
+const getPost = function (postId) {
+    return axios({
+        url: `/board/detail/${postId}`,
+        method: 'GET'
+    });
+};
+
+export {getMenuList, getBoardList, getPost};

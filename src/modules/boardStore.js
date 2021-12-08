@@ -1,8 +1,9 @@
-import {getBoardList} from '../api/request';
+import {getBoardList, getPost} from '../api/request';
 const state = {
     boardList: [],
     boardCount: 8,
-    boardLimitCount: 0
+    boardLimitCount: 0,
+    postInfo: ''
 };
 const getters = {
     getBoardList(state) {
@@ -10,6 +11,9 @@ const getters = {
     },
     getBoardLimit(state) {
         return state.boardLimitCount;
+    },
+    getPostInfo(state) {
+        return state.postInfo;
     }
 };
 const mutations = {
@@ -17,6 +21,10 @@ const mutations = {
         state.boardLimitCount = data.totalCount;
         state.boardList = data.items;
         return;
+    },
+
+    setPostContent(state, data) {
+        return (state.postInfo = data.item);
     }
 };
 const actions = {
@@ -24,8 +32,17 @@ const actions = {
         getBoardList({
             ...boardInfo,
             count: 6
-        }).then(function (response) {
-            state.commit('setBoardList', response.data);
+        })
+            .then(function (response) {
+                state.commit('setBoardList', response.data);
+            })
+            .catch(function (err) {
+                console.error(err);
+            });
+    },
+    requestPost(state, postId) {
+        getPost(postId).then(function (response) {
+            state.commit('setPostContent', response.data);
         });
     }
 };
