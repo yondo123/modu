@@ -10,7 +10,7 @@
                     </div>
                     <p class="publish">
                         <span class="writer">{{ post.writer }}</span
-                        ><span class="date">{{ formatDate }}</span>
+                        ><span class="date">{{ postDate }}</span>
                     </p>
                 </div>
                 <div class="post-content ProseMirror toastui-editor-contents" v-html="post.content"></div>
@@ -31,7 +31,7 @@ import MDCommentWrite from '../components/MDCommentWrite.vue';
 import {mapGetters} from 'vuex';
 export default {
     computed: {
-        ...mapGetters('post', {post: 'getPostInfo', formatDate: 'getFormattingDate'})
+        ...mapGetters('post', {post: 'getPostInfo', postDate: 'getPostDate'})
     },
     components: {
         MDProfile,

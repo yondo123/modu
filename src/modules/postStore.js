@@ -1,19 +1,26 @@
-import {getPost, registryComment} from '../api/request';
+import {getPost, registryComment, getComments} from '../api/request';
 const state = {
-    postInfo: undefined
+    postInfo: undefined,
+    comments: []
 };
 const getters = {
     getPostInfo(state) {
         return state.postInfo;
     },
-    getFormattingDate(state) {
+    getPostDate(state) {
         const date = state.postInfo.createDate;
         return `${date.substr(0, 4)}. ${date.substr(4, 2)}. ${date.substr(6, 2)}. ${date.substr(8, 2)}:${date.substr(10, 2)}`;
+    },
+    getComments(state) {
+        return state.comments;
     }
 };
 const mutations = {
     setPostContent(state, data) {
         return (state.postInfo = data.item);
+    },
+    setComments(state, data) {
+        return (state.comments = data.items);
     }
 };
 const actions = {
@@ -22,13 +29,20 @@ const actions = {
             state.commit('setPostContent', response.data);
         });
     },
+    requestComments(state, postId) {
+        getComments(postId).then(function (response) {
+            state.commit('setComments', response.data);
+        });
+    },
     sendComment(state, request) {
         registryComment({
             boardSeq: request.post,
             content: request.content,
             writer: 'test-admin'
         }).then(function (response) {
-            console.log(JSON.stringify(response));
+            if (response.data.success) {
+                state.dispatch('requestComments', request.post);
+            }
         });
     }
 };

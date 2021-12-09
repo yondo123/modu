@@ -17,7 +17,7 @@
                 <div class="-mr-1">
                     <button
                         v-on:click="
-                            sendComment({
+                            this.fetchSendComment({
                                 content: this.content,
                                 post: this.postId
                             })
@@ -43,7 +43,11 @@ export default {
         };
     },
     methods: {
-        ...mapActions('post', ['sendComment'])
+        ...mapActions('post', ['sendComment']),
+        fetchSendComment(request) {
+            this.content = '';
+            return this.sendComment(request);
+        }
     }
 };
 </script>

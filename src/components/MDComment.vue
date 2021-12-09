@@ -1,27 +1,16 @@
 <template>
     <ul>
-        <li class="comment-item">
+        <li class="comment-item" v-for="(item, index) in this.comments" :key="index">
             <div class="comments">
                 <div class="profile">
                     <img src="../assets/logo.jpg" alt="user_id" class="comment-user" />
                 </div>
                 <div class="comment-content">
-                    <p class="comment-info"><span class="writer">admin</span><span class="date">2021. 11. 26. 13:11</span></p>
-                    <p class="comment">
-                        오, 어디서하나요 오, 어디서하나요오, 어디서하나요오, 어디서하나요오, 어디서하나요오, 어디서하나요오, 어디서하나요오, 어디서하나요오, 어디서하나요오, 어디서하나요오,
-                        어디서하나요
+                    <p class="comment-info">
+                        <span class="writer">{{ item.writer }}</span
+                        ><span class="date">{{ item.createDate }}</span>
                     </p>
-                </div>
-            </div>
-        </li>
-        <li class="comment-item">
-            <div class="comments">
-                <div class="profile">
-                    <img src="../assets/logo.jpg" alt="user_id" class="comment-user" />
-                </div>
-                <div class="comment-content">
-                    <p class="comment-info"><span class="writer">admin</span><span class="date">2021. 11. 26. 13:11</span></p>
-                    <p class="comment">저도 참여하고 싶습니다.</p>
+                    <p class="comment">{{ item.content }}</p>
                 </div>
             </div>
         </li>
@@ -29,7 +18,26 @@
 </template>
 
 <script>
-export default {};
+import {mapGetters} from 'vuex';
+export default {
+    data() {
+        return {
+            postId: this.$route.params.postId
+        };
+    },
+    computed: {
+        ...mapGetters('post', {comments: 'getComments'})
+    },
+    methods: {
+        formatDate(date) {
+            return `${date.substr(0, 4)}. ${date.substr(4, 2)}. ${date.substr(6, 2)}. ${date.substr(8, 2)}:${date.substr(10, 2)}`;
+        }
+    },
+    beforeUpdate() {},
+    created() {
+        this.$store.dispatch('post/requestComments', this.postId);
+    }
+};
 </script>
 
 <style scoped>

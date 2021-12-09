@@ -55,7 +55,6 @@ const getComments = function (postId) {
  * @param {object} commentInfo : 요청 객체 (boardSeq, content, writer)
  */
 const registryComment = function (commentInfo) {
-    alert(JSON.stringify(commentInfo));
     return axios({
         url: '/review/insert',
         method: 'POST',
