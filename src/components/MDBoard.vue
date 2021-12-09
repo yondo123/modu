@@ -5,7 +5,7 @@
             <MDProfile></MDProfile>
             <ul class="board-list">
                 <li v-for="(item, index) in this.boardList" :key="index">
-                    <a href="#">
+                    <a v-bind:href="$router.resolve({name: 'post', params: {postId: item.boardSeq}}).href">
                         <div class="profile">
                             <img v-bind:src="item.profileUrl" v-bind:art="item.writer" />
                         </div>
