@@ -31,7 +31,7 @@ import MDCommentWrite from '../components/MDCommentWrite.vue';
 import {mapGetters} from 'vuex';
 export default {
     computed: {
-        ...mapGetters('board', {post: 'getPostInfo', formatDate: 'getFormattingDate'})
+        ...mapGetters('post', {post: 'getPostInfo', formatDate: 'getFormattingDate'})
     },
     components: {
         MDProfile,
@@ -39,7 +39,7 @@ export default {
         MDCommentWrite
     },
     created() {
-        this.$store.dispatch('board/requestPost', this.$route.params.postId);
+        this.$store.dispatch('post/requestPost', this.$route.params.postId);
     }
 };
 </script>
