@@ -3,7 +3,7 @@ const state = {
     boardList: [],
     boardCount: 8,
     boardLimitCount: 0,
-    postInfo: ''
+    postInfo: undefined
 };
 const getters = {
     getBoardList(state) {
@@ -14,6 +14,10 @@ const getters = {
     },
     getPostInfo(state) {
         return state.postInfo;
+    },
+    getFormattingDate(state) {
+        const date = state.postInfo.createDate;
+        return `${date.substr(0, 4)}. ${date.substr(4, 2)}. ${date.substr(6, 2)}. ${date.substr(8, 2)}:${date.substr(10, 2)}`;
     }
 };
 const mutations = {

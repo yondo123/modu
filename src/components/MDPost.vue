@@ -3,14 +3,17 @@
         <main>
             <MDProfile></MDProfile>
             <div class="post-wrap">
-                <h2 class="post-title">가나다라마바사아자차카타파하</h2>
+                <h2 class="post-title"></h2>
                 <div class="post-info">
                     <div class="profile">
-                        <img src="../assets/logo.jpg" alt="user_id" class="writer-img" />
+                        <img v-bind:src="post.profileUrl" v-bind:alt="post.writer" class="writer-img" />
                     </div>
-                    <p class="publish"><span class="writer">admin</span><span class="date">2021. 11. 09. 13:49</span></p>
+                    <p class="publish">
+                        <span class="writer">{{ post.writer }}</span
+                        ><span class="date">{{ formatDate }}</span>
+                    </p>
                 </div>
-                <div class="post-content ProseMirror toastui-editor-contents" v-html="contentSource"></div>
+                <div class="post-content ProseMirror toastui-editor-contents" v-html="post.content"></div>
                 <div class="post-comments">
                     <MDComment />
                     <MDCommentWrite />
@@ -27,13 +30,8 @@ import MDComment from '../components/MDComment.vue';
 import MDCommentWrite from '../components/MDCommentWrite.vue';
 import {mapGetters} from 'vuex';
 export default {
-    data() {
-        return {
-            contentSource: ''
-        };
-    },
     computed: {
-        ...mapGetters('board', {post: 'getPostInfo'})
+        ...mapGetters('board', {post: 'getPostInfo', formatDate: 'getFormattingDate'})
     },
     components: {
         MDProfile,
@@ -41,8 +39,7 @@ export default {
         MDCommentWrite
     },
     created() {
-        this.$store.dispatch('board/requestPost');
-        // this.contentSource = `<h3>강남역 스터디 모집</h3><p><br class="ProseMirror-trailingBreak"></p><p>무조건 약속 잘 지키시는 분만 환영합니다. </p><p><strong>철새 금지</strong></p><p><br class="ProseMirror-trailingBreak"></p><ul><li class="task-list-item checked" data-task="true" data-task-checked="true"><p>체크리스트 테스트</p></li></ul><blockquote><p>인용문구 테스트</p></blockquote><p><br class="ProseMirror-trailingBreak"></p><table><thead><tr><th><p>테이블 테스트</p></th><th><p>테이블 테스트2</p></th></tr></thead><tbody><tr><td><p>test</p></td><td><p>test</p></td></tr></tbody></table>`;
+        this.$store.dispatch('board/requestPost', this.$route.params.postId);
     }
 };
 </script>
