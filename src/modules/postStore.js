@@ -1,4 +1,4 @@
-import {getPost, registryComment, getComments} from '../api/request';
+import {getPost, registryComment, getComments, registryPost} from '../api/request';
 const state = {
     postInfo: undefined,
     comments: []
@@ -43,6 +43,14 @@ const actions = {
             if (response.data.success) {
                 state.dispatch('requestComments', request.post);
             }
+        });
+    },
+    sendPost(state, request) {
+        registryPost({
+            catId: request.boardId,
+            content: request.content,
+            writer: 'test-admin',
+            title: request.title
         });
     }
 };

@@ -5,12 +5,12 @@
             <MDProfile></MDProfile>
             <div class="post-header">
                 <label for="postTitle" class="title-label">제목</label>
-                <input type="text" id="postTitle" placeholder="제목을 입력해주세요.." size="150" />
+                <input type="text" id="postTitle" placeholder="제목을 입력해주세요.." size="150" v-model="title" />
             </div>
             <div ref="edtior" class="editor-wrap"></div>
             <div class="post-button-wrap">
-                <button type="button" class="green-button">취소</button>
-                <button type="button" class="green-button" v-on:click="getHtmlSource">글쓰기</button>
+                <button type="button" class="green-button" v-on:click="$router.go(-1)">취소</button>
+                <button type="button" class="green-button" v-on:click="sendContent">글쓰기</button>
             </div>
         </main>
     </div>
@@ -20,15 +20,25 @@
 import '@toast-ui/editor/dist/toastui-editor.css';
 import Editor from '@toast-ui/editor';
 import {ref, onMounted} from 'vue';
-
+import {useRoute} from 'vue-router';
+import {useStore} from 'vuex';
 let toastEditor;
-const edtior = ref(null);
 
-function getHtmlSource() {
-    console.log(toastEditor.getHTML());
+const route = useRoute();
+const store = useStore();
+const edtior = ref(null);
+const title = ref('');
+
+function sendContent() {
+    store.dispatch('post/sendPost', {
+        title: title.value._value,
+        content: toastEditor.getHTML(),
+        boardId: route.params.boardId
+    });
+    // console.log(toastEditor.getHTML());
 }
 
-onMounted(() => {
+onMounted(function () {
     toastEditor = new Editor({
         el: edtior.value,
         height: '720px',

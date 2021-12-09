@@ -62,4 +62,16 @@ const registryComment = function (commentInfo) {
     });
 };
 
-export {getMenuList, getBoardList, getPost, getComments, registryComment};
+/**
+ * 게시글 등록
+ * @param {object} postInfo : 요청 객체 (catId, content, title, writer)
+ */
+const registryPost = function (postInfo) {
+    return axios({
+        url: '/board/insert',
+        method: 'POST',
+        params: postInfo
+    });
+};
+
+export {getMenuList, getBoardList, getPost, getComments, registryComment, registryPost};

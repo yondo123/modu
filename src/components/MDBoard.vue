@@ -20,7 +20,7 @@
                 <VPagenation v-model="currentPage" :pages="`${Math.ceil(this.limit / this.perPage)}`" :range-size="1" active-color="#FF7675" @update:modelValue="movePage" />
             </div>
             <div class="button-wrap">
-                <button type="button" class="green-button write-button">글쓰기</button>
+                <button type="button" class="green-button write-button" v-on:click="this.$router.push({name: 'write', params: {boardId: $route.params.id}})">글쓰기</button>
             </div>
         </main>
     </div>
