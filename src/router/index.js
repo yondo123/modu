@@ -24,13 +24,14 @@ const routes = [
     },
     {
         //게시글 작성
+        name: 'write',
         path: '/board/:boardId/write',
         component: MDPostWrite
     },
     {
         //게시글 상세
         name: 'post',
-        path: '/post/:id',
+        path: '/post/:postId',
         component: MDPost
     },
     {

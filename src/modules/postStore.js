@@ -1,4 +1,4 @@
-import {getPost} from '../api/request';
+import {getPost, registryComment} from '../api/request';
 const state = {
     postInfo: undefined
 };
@@ -20,6 +20,15 @@ const actions = {
     requestPost(state, postId) {
         getPost(postId).then(function (response) {
             state.commit('setPostContent', response.data);
+        });
+    },
+    sendComment(state, request) {
+        registryComment({
+            boardSeq: request.post,
+            content: request.content,
+            writer: 'test-admin'
+        }).then(function (response) {
+            console.log(JSON.stringify(response));
         });
     }
 };
