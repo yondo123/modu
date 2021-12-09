@@ -70,7 +70,7 @@ const registryPost = function (postInfo) {
     return axios({
         url: '/board/insert',
         method: 'POST',
-        params: postInfo
+        data: postInfo
     });
 };
 

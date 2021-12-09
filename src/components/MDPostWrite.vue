@@ -31,11 +31,10 @@ const title = ref('');
 
 function sendContent() {
     store.dispatch('post/sendPost', {
-        title: title.value._value,
+        title: title.value,
         content: toastEditor.getHTML(),
         boardId: route.params.boardId
     });
-    // console.log(toastEditor.getHTML());
 }
 
 onMounted(function () {
