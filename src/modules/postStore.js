@@ -51,7 +51,18 @@ const actions = {
             content: request.content,
             writer: 'test-admin',
             title: request.title
-        });
+        })
+            .then(function (response) {
+                if (response.data.success) {
+                    alert('성공적으로 글을 등록하였습니다.');
+                } else {
+                    alert('글쓰기에 실패하였습니다.\n잠시 후 다시 시도해주세요.');
+                }
+            })
+            .catch(function (err) {
+                console.err(err);
+                alert('글쓰기에 실패하였습니다.\n잠시 후 다시 시도해주세요.');
+            });
     }
 };
 

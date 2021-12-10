@@ -1,7 +1,6 @@
 <template>
     <div class="right-wrap md:col-span=9 lg:col-span-10">
         <main>
-            <!-- signed -> 로그인, unsign -> 비 로그인 -->
             <MDProfile></MDProfile>
             <div class="post-header">
                 <label for="postTitle" class="title-label">제목</label>
@@ -20,11 +19,12 @@
 import '@toast-ui/editor/dist/toastui-editor.css';
 import Editor from '@toast-ui/editor';
 import {ref, onMounted} from 'vue';
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 import {useStore} from 'vuex';
 let toastEditor;
 
 const route = useRoute();
+const router = useRouter();
 const store = useStore();
 const edtior = ref(null);
 const title = ref('');
@@ -35,6 +35,7 @@ function sendContent() {
         content: toastEditor.getHTML(),
         boardId: route.params.boardId
     });
+    return router.go(-1);
 }
 
 onMounted(function () {
