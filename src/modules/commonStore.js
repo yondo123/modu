@@ -2,7 +2,12 @@ import {getMenuList} from '../api/request';
 
 const state = {
     mobile: window.innerWidth < 1024 ? true : false,
-    menuList: []
+    menuList: [],
+    selectedMenuId: '',
+    menuHeader: {
+        CAT0001: 'Community',
+        CAT0002: 'Recruitment for study'
+    }
 };
 
 const getters = {
@@ -14,6 +19,9 @@ const getters = {
 const mutations = {
     setMenuList(state, list) {
         return (state.menuList = list);
+    },
+    setSelectedMenu(state, catId) {
+        return (state.selectedMenuId = catId);
     }
 };
 

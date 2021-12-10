@@ -48,7 +48,9 @@
             <ul>
                 <!-- selected-menu -->
                 <li v-for="(item, index) in this.menuList" :key="index">
-                    <a v-bind:href="$router.resolve({name: 'board', params: {id: item.catId}}).href"><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</a>
+                    <a v-bind:class="isActiveMenu(item.catId)" v-on:click="setSelectedMenu(item.catId)" v-bind:href="$router.resolve({name: 'board', params: {id: item.catId}}).href"
+                        ><i v-bind:class="`fas ${menuIcon(item.catId)}`"></i> &nbsp;{{ item.name }}</a
+                    >
                 </li>
             </ul>
         </nav>
@@ -56,7 +58,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapState, mapGetters, mapMutations} from 'vuex';
 export default {
     data() {
         return {
@@ -64,9 +66,11 @@ export default {
         };
     },
     computed: {
-        ...mapGetters('style', {menuList: 'getMenuList'})
+        ...mapGetters('style', {menuList: 'getMenuList'}),
+        ...mapState('style', ['menuHeader', 'selectedMenuId'])
     },
     methods: {
+        ...mapMutations('style', ['setSelectedMenu']),
         toggleMenu() {
             return (this.menuOpen = !this.menuOpen);
         },
@@ -81,6 +85,9 @@ export default {
                     break;
             }
             return iconClass;
+        },
+        isActiveMenu(menuId) {
+            return menuId === this.selectedMenuId ? 'active-menu' : '';
         }
     },
     created() {
@@ -156,7 +163,7 @@ export default {
     border-radius: 0.8rem;
 }
 
-.router-link-active {
+.active-menu {
     color: var(--main-color) !important;
     font-weight: bold !important;
 }
@@ -189,7 +196,7 @@ export default {
         box-shadow: none;
     }
 
-    .left-wrap ul li:hover {
+    .left-wrap ul li a:hover {
         font-weight: bold;
         opacity: 0.8;
         border: 0.1rem solid #fff;

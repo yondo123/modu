@@ -24,7 +24,7 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
 import MDProfile from '../components/MDProfile.vue';
-import {mapGetters} from 'vuex';
+import {mapGetters, mapMutations} from 'vuex';
 export default {
     data() {
         return {
@@ -39,7 +39,9 @@ export default {
         InfiniteLoading
     },
     methods: {
+        ...mapMutations('style', ['setSelectedMenu']),
         infiniteHandler() {
+            this.setSelectedMenu('CAT0001');
             setTimeout(() => {
                 this.$store.dispatch('board/requestBoardList', {
                     catId: 'CAT0001',

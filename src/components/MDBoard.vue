@@ -30,7 +30,7 @@
 import VPagenation from '@hennge/vue3-pagination';
 import '@hennge/vue3-pagination/dist/vue3-pagination.css';
 import MDProfile from '../components/MDProfile.vue';
-import {mapGetters} from 'vuex';
+import {mapGetters, mapMutations} from 'vuex';
 export default {
     data() {
         return {
@@ -47,12 +47,15 @@ export default {
         VPagenation
     },
     methods: {
+        ...mapMutations('style', ['setSelectedMenu']),
         movePage(page) {
             return this.fetchBoardList(page);
         },
         fetchBoardList(page) {
+            const boardId = this.$route.params.id;
+            this.setSelectedMenu(boardId);
             this.$store.dispatch('board/requestBoardList', {
-                catId: this.$route.params.id,
+                catId: boardId,
                 page: page
             });
         }
