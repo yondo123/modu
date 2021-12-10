@@ -1,6 +1,7 @@
 import {getMenuList} from '../api/request';
 
 const state = {
+    loadingStatus: false,
     mobile: window.innerWidth < 1024 ? true : false,
     menuList: [],
     selectedMenuId: '',
@@ -17,6 +18,12 @@ const getters = {
 };
 
 const mutations = {
+    startLoading(state) {
+        state.loadingStatus = true;
+    },
+    endLoading(state) {
+        state.loadingStatus = false;
+    },
     setMenuList(state, list) {
         return (state.menuList = list);
     },
