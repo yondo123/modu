@@ -31,7 +31,7 @@ const getBoardList = function (boardInfo) {
  */
 const getPost = function (postId) {
     return axios({
-        url: `/board/detail/${postId}`,
+        url: `${PROXY_URL}/board/detail/${postId}`,
         method: 'GET'
     });
 };
