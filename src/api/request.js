@@ -1,11 +1,12 @@
 import axios from 'axios';
+const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 /**
  * 메뉴 리스트 조회
  * @returns {Promise}
  */
 const getMenuList = function () {
-    return axios.get('/category/list');
+    return axios.get(`${PROXY_URL}/category/list`);
 };
 
 /**
@@ -14,7 +15,7 @@ const getMenuList = function () {
  */
 const getBoardList = function (boardInfo) {
     return axios({
-        url: '/board/list',
+        url: `${PROXY_URL}/board/list`,
         method: 'GET',
         params: {
             catId: boardInfo.catId,
@@ -42,7 +43,7 @@ const getPost = function (postId) {
  */
 const getComments = function (postId) {
     return axios({
-        url: '/review/list',
+        url: `${PROXY_URL}/review/list`,
         method: 'GET',
         params: {
             boardSeq: postId
@@ -56,7 +57,7 @@ const getComments = function (postId) {
  */
 const registryComment = function (commentInfo) {
     return axios({
-        url: '/review/insert',
+        url: `${PROXY_URL}/review/insert`,
         method: 'POST',
         params: commentInfo
     });
@@ -68,7 +69,7 @@ const registryComment = function (commentInfo) {
  */
 const registryPost = function (postInfo) {
     return axios({
-        url: '/board/insert',
+        url: `${PROXY_URL}/board/insert`,
         method: 'POST',
         data: postInfo
     });
