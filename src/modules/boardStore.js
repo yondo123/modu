@@ -1,6 +1,7 @@
 import {getBoardList} from '../api/request';
 const state = {
     boardList: [],
+    boardLessCount: 6,
     boardCount: 8,
     boardLimitCount: 0
 };
@@ -15,15 +16,14 @@ const getters = {
 const mutations = {
     setBoardList(state, data) {
         state.boardLimitCount = data.totalCount;
-        state.boardList = data.items;
+        state.boardList = state.boardList.concat(data.items);
         return;
     }
 };
 const actions = {
     requestBoardList(state, boardInfo) {
         getBoardList({
-            ...boardInfo,
-            count: 6
+            ...boardInfo
         })
             .then(function (response) {
                 state.commit('setBoardList', response.data);
