@@ -4,7 +4,7 @@
             <!-- signed -> 로그인, unsign -> 비 로그인 -->
             <MDProfile></MDProfile>
             <ul class="board-list" @scroll="handleScroll">
-                <li v-for="(item, index) in this.boardList" :key="index">
+                <li v-for="(item, index) in this.list" :key="index">
                     <a v-bind:href="$router.resolve({name: 'post', params: {postId: item.boardSeq}}).href">
                         <div class="profile">
                             <img v-bind:src="item.profileUrl" v-bind:art="item.writer" />
@@ -30,6 +30,7 @@ import {mapState, mapGetters, mapMutations} from 'vuex';
 export default {
     data() {
         return {
+            list: [],
             complete: false,
             page: 1
         };
@@ -56,11 +57,12 @@ export default {
                         page: this.page,
                         count: this.boardLessCount
                     });
-                    if (this.boardList.length > this.boardLimitCount || !this.boardList.length) {
+                    if (this.boardList.length > this.boardLimitCount || (!this.boardList.length && this.page > 1)) {
                         this.endLoading();
                         this.complete = true;
                         return;
                     } else {
+                        this.list = this.list.concat(this.boardList);
                         this.page++;
                     }
                     this.endLoading();

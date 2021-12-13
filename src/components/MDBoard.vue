@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <div class="pagination-wrap">
-                    <VPagenation v-model="currentPage" :pages="`${Math.ceil(this.limit / this.perPage)}`" :range-size="1" active-color="#FF7675" @update:modelValue="movePage" />
+                    <VPagenation v-model="currentPage" :pages="`${Math.ceil(this.limit / this.boardCount)}`" :range-size="1" active-color="#FF7675" @update:modelValue="movePage" />
                 </div>
                 <div class="button-wrap">
                     <button type="button" class="green-button write-button" v-on:click="this.$router.push({name: 'write', params: {boardId: $route.params.id}})">글쓰기</button>
@@ -36,16 +36,16 @@ import VPagenation from '@hennge/vue3-pagination';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import '@hennge/vue3-pagination/dist/vue3-pagination.css';
 import MDProfile from '../components/MDProfile.vue';
-import {mapGetters, mapMutations} from 'vuex';
+import {mapState, mapGetters, mapMutations} from 'vuex';
 export default {
     data() {
         return {
             limitPage: 0,
-            currentPage: 1,
-            perPage: 6
+            currentPage: 1
         };
     },
     computed: {
+        ...mapState('board', ['boardCount']),
         ...mapGetters('board', {boardList: 'getBoardList', limit: 'getBoardLimit'})
     },
     components: {
@@ -65,7 +65,8 @@ export default {
             setTimeout(() => {
                 this.$store.dispatch('board/requestBoardList', {
                     catId: boardId,
-                    page: page
+                    page: page,
+                    count: this.boardCount
                 });
                 this.endLoading();
             }, 1000);
