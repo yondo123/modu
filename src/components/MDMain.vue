@@ -4,7 +4,7 @@
             <!-- signed -> 로그인, unsign -> 비 로그인 -->
             <MDProfile></MDProfile>
             <ul class="board-list" @scroll="handleScroll">
-                <li v-for="(item, index) in this.list" :key="index">
+                <li v-for="(item, index) in this.boardList" :key="index">
                     <a v-bind:href="$router.resolve({name: 'post', params: {postId: item.boardSeq}}).href">
                         <div class="profile">
                             <img v-bind:src="item.profileUrl" v-bind:art="item.writer" />
@@ -26,18 +26,17 @@
 <script>
 import MDProfile from '../components/MDProfile.vue';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
-import {mapState, mapGetters, mapMutations} from 'vuex';
+import {mapState, mapMutations} from 'vuex';
 export default {
     data() {
         return {
-            list: [],
             complete: false,
-            page: 1
+            page: 1,
+            boardList: []
         };
     },
     computed: {
-        ...mapState('board', ['boardLessCount', 'boardLimitCount']),
-        ...mapGetters('board', {boardList: 'getBoardList'})
+        ...mapState('board', ['boardLessCount', 'boardLimitCount', 'totalList'])
     },
     components: {
         MDProfile,
@@ -52,20 +51,24 @@ export default {
                 this.startLoading();
                 this.setSelectedMenu('CAT0001');
                 setTimeout(() => {
-                    this.$store.dispatch('board/requestBoardList', {
-                        catId: 'CAT0001',
-                        page: this.page,
-                        count: this.boardLessCount
-                    });
-                    if (this.boardList.length > this.boardLimitCount || (!this.boardList.length && this.page > 1)) {
-                        this.endLoading();
-                        this.complete = true;
-                        return;
-                    } else {
-                        this.list = this.list.concat(this.boardList);
-                        this.page++;
-                    }
-                    this.endLoading();
+                    this.$store
+                        .dispatch('board/fetchBoardList', {
+                            catId: 'CAT0001',
+                            page: this.page,
+                            count: this.boardLessCount
+                        })
+                        .then(response => {
+                            if (response.data.success) {
+                                if (response.data.items.length < response.data.totalCount) {
+                                    this.boardList = this.boardList.concat(response.data.items);
+                                    this.page++;
+                                } else {
+                                    this.endLoading();
+                                    this.complete = true;
+                                }
+                            }
+                            this.endLoading();
+                        });
                 }, 1000);
             }
         },

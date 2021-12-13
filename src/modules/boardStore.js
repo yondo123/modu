@@ -21,6 +21,9 @@ const mutations = {
     }
 };
 const actions = {
+    fetchBoardList(state, boardInfo) {
+        return getBoardList({...boardInfo});
+    },
     requestBoardList(state, boardInfo) {
         getBoardList({
             ...boardInfo
