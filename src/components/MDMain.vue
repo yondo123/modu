@@ -69,14 +69,13 @@ export default {
                             }
                             this.endLoading();
                         });
-                }, 1000);
+                }, 500);
             }
         },
         handleScroll(e) {
             const {scrollHeight, scrollTop, clientHeight} = e.target;
-            const isAtTheBottom = scrollHeight === scrollTop + clientHeight;
-            // 일정 한도 밑으로 내려오면 함수 실행
-            if (isAtTheBottom) {
+            const isBottom = scrollHeight === Math.ceil(scrollTop) + clientHeight;
+            if (isBottom) {
                 this.infiniteHandler();
             }
         }
@@ -89,6 +88,11 @@ export default {
 
 <style scoped>
 @import url('../assets/css/board.css');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .list {
     height: calc(100vh - 70px);
     overflow: auto;

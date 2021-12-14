@@ -3,7 +3,7 @@
         <main>
             <MDProfile></MDProfile>
             <div class="post-wrap">
-                <h2 class="post-title"></h2>
+                <h2 class="post-title">{{ post.title }}</h2>
                 <div class="post-info">
                     <div class="profile">
                         <img v-bind:src="post.profileUrl" v-bind:alt="post.writer" class="writer-img" />
