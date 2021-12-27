@@ -82,6 +82,12 @@ export default {
     },
     created() {
         this.infiniteHandler();
+        const token = this.$route.query.jwtToken.trim();
+        if (token.length) {
+            localStorage.setItem('jwt', token);
+            history.replaceState({}, null, location.pathname);
+        }
+        this.$store.commit('style/changeLoginState');
     }
 };
 </script>

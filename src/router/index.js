@@ -4,7 +4,6 @@ import MDCalendar from '../components/MDCalendar.vue';
 import MDBoard from '../components/MDBoard.vue';
 import MDPost from '../components/MDPost.vue';
 import MDPostWrite from '../components/MDPostWrite.vue';
-import MDLogin from '../components/MDLogin.vue';
 
 const routes = [
     {
@@ -13,14 +12,14 @@ const routes = [
         redirect: '/board'
     },
     {
+        //인증
+        path: '/auth',
+        redirect: '/board'
+    },
+    {
         //메인 게시판 (스터디 모집)
         path: '/board',
         component: MDMain
-    },
-    {
-        //인증
-        path: '/auth',
-        component: MDLogin
     },
     {
         //스터디 및 자유 게시판
