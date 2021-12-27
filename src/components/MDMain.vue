@@ -86,8 +86,8 @@ export default {
         if (token.length) {
             localStorage.setItem('jwt', token);
             history.replaceState({}, null, location.pathname);
+            return this.$store.dispatch('style/requestUserProfile');
         }
-        this.$store.commit('style/changeLoginState');
     }
 };
 </script>

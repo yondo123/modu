@@ -1,6 +1,7 @@
-import {getMenuList} from '../api/request';
+import {getMenuList, getUserProfile} from '../api/request';
 
 const state = {
+    userInfo: undefined,
     isLogin: false,
     loadingStatus: false,
     mobile: window.innerWidth < 1024 ? true : false,
@@ -33,6 +34,9 @@ const mutations = {
     },
     setSelectedMenu(state, catId) {
         return (state.selectedMenuId = catId);
+    },
+    setUserInfo(state, profile) {
+        return (state.userInfo = profile);
     }
 };
 
@@ -40,6 +44,14 @@ const actions = {
     requestMenuList(state) {
         getMenuList().then(function (response) {
             state.commit('setMenuList', response.data.items);
+        });
+    },
+    requestUserProfile(state) {
+        getUserProfile().then(function (response) {
+            if (response.data.success) {
+                state.commit('setUserInfo', response.data.item);
+                state.commit('changeLoginState');
+            }
         });
     }
 };

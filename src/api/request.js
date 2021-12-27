@@ -75,4 +75,15 @@ const registryPost = function (postInfo) {
     });
 };
 
-export {getMenuList, getBoardList, getPost, getComments, registryComment, registryPost};
+/**
+ * 사용자 정보 조회
+ */
+const getUserProfile = function () {
+    return axios({
+        url: `${PROXY_URL}/board/profile`,
+        method: 'GET',
+        headers: {'X-AUTH_TOKEN': localStorage.getItem('jwt') || ''}
+    });
+};
+
+export {getMenuList, getBoardList, getPost, getComments, registryComment, registryPost, getUserProfile};
