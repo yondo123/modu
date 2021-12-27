@@ -80,7 +80,7 @@ const registryPost = function (postInfo) {
  */
 const getUserProfile = function () {
     return axios({
-        url: `${PROXY_URL}/board/profile`,
+        url: `${PROXY_URL}/user/profile`,
         method: 'GET',
         headers: {'X-AUTH_TOKEN': localStorage.getItem('jwt') || ''}
     });
