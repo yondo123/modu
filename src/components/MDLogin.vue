@@ -10,6 +10,7 @@ export default {
             localStorage.setItem('jwt', token);
         }
         this.$store.commit('style/changeLoginState');
+        return (window.location.href = '/');
     }
 };
 </script>
