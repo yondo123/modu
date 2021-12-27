@@ -1,6 +1,7 @@
 import {getMenuList} from '../api/request';
 
 const state = {
+    isLogin: false,
     loadingStatus: false,
     mobile: window.innerWidth < 1024 ? true : false,
     menuList: [],
