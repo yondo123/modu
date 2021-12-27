@@ -19,6 +19,9 @@ const getters = {
 };
 
 const mutations = {
+    changeLoginState(state) {
+        state.isLogin = !state.isLogin;
+    },
     startLoading(state) {
         state.loadingStatus = true;
     },

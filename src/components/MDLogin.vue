@@ -1,10 +1,15 @@
 <template>
-    <h2>GIT LOGIN AUTH</h2>
     <p>{{ $route.query.jwtToken }}</p>
 </template>
 
 <script>
 export default {
-    created() {}
+    created() {
+        const token = this.$route.query.jwtToken.trim();
+        if (token.length) {
+            localStorage.setItem('jwt', token);
+        }
+        this.$store.commit('style/changeLoginState');
+    }
 };
 </script>
