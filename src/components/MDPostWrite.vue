@@ -38,12 +38,25 @@ function sendContent() {
     return router.go(-1);
 }
 
+function uploadImage(blob) {
+    store.dispatch('post/requestSendImage', blob).then(function (response) {
+        console.log(JSON.stringify(response));
+    });
+}
+
 onMounted(function () {
     toastEditor = new Editor({
         el: edtior.value,
         height: '720px',
         initialEditType: 'wysiwyg',
-        previewStyle: 'vertical'
+        previewStyle: 'vertical',
+        hooks: {
+            addImageBlobHook: (blob, callback) => {
+                const imageSrc = uploadImage(blob);
+                callback(imageSrc, 'alt text');
+                return false;
+            }
+        }
     });
     toastEditor.getMarkdown();
 });

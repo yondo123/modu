@@ -1,4 +1,4 @@
-import {getPost, registryComment, getComments, registryPost} from '../api/request';
+import {sendImage, getPost, registryComment, getComments, registryPost} from '../api/request';
 const state = {
     postInfo: undefined,
     comments: []
@@ -63,6 +63,11 @@ const actions = {
                 console.err(err);
                 alert('글쓰기에 실패하였습니다.\n잠시 후 다시 시도해주세요.');
             });
+    },
+    requestSendImage(state, uploadImage) {
+        const formData = new FormData();
+        formData.append('file', uploadImage);
+        sendImage(formData);
     }
 };
 
