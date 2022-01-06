@@ -22,6 +22,9 @@ export default {
         redirect() {
             return (window.location.href = 'http://ec2-3-38-117-47.ap-northeast-2.compute.amazonaws.com:8090/oauth2/authorization/github');
         }
+    },
+    created() {
+        console.log(JSON.stringify(this.userInfo));
     }
 };
 </script>
