@@ -15,6 +15,7 @@
         "core-js": "^3.6.5",
         "dotenv": "^10.0.0",
         "postcss": "^7.0.39",
+        "secure-ls": "^1.2.6",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
         "v-calendar": "^3.0.0-alpha.6",
         "vue": "^3.0.0",
@@ -22,7 +23,8 @@
         "vue-router": "^4.0.12",
         "vue-spinner": "^1.0.4",
         "vue-tailwind": "^2.2.0-2",
-        "vuex": "^4.0.2"
+        "vuex": "^4.0.2",
+        "vuex-persistedstate": "^4.1.0"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
