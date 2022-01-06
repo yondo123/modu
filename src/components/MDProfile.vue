@@ -1,13 +1,20 @@
 <template>
     <!-- signed -> 로그인, unsign -> 비 로그인 -->
-    <div class="top-wrap" v-bind:class="{sign: userInfo.id}">
+    <div class="top-wrap" v-bind:class="{sign: isLogin}">
         <h2 class="board-title">
             <span>{{ menuHeader[selectedMenuId] }}</span>
         </h2>
-        <button type="button" class="green-button login-button" v-bind:class="{hide: userInfo.id}" v-on:click="redirect">Github Login</button>
-        <div class="user-info" v-bind:class="{hide: !userInfo.id}">
-            <span><strong>userInfo.id</strong>님, 안녕하세요.</span>
-            <button type="button" class="logout-button">Logout</button>
+        <div v-if="isLogin">
+            <div class="user-info">
+                <span
+                    ><strong>{{ userInfo.id }}</strong
+                    >님, 안녕하세요.</span
+                >
+                <button type="button" class="logout-button">Logout</button>
+            </div>
+        </div>
+        <div v-else>
+            <button type="button" class="green-button login-button" v-on:click="redirect">Github Login</button>
         </div>
     </div>
 </template>
@@ -15,6 +22,11 @@
 <script>
 import {mapState} from 'vuex';
 export default {
+    data() {
+        return {
+            isLogin: false
+        };
+    },
     computed: {
         ...mapState('style', ['menuHeader', 'selectedMenuId', 'userInfo'])
     },
@@ -24,6 +36,9 @@ export default {
         }
     },
     created() {
+        if (this.userInfo && this.userInfo.id) {
+            this.isLogin = true;
+        }
         console.log(JSON.stringify(this.userInfo));
     }
 };
