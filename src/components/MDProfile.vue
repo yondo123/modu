@@ -1,12 +1,12 @@
 <template>
     <!-- signed -> 로그인, unsign -> 비 로그인 -->
-    <div class="top-wrap" v-bind:class="{sign: userInfo}">
+    <div class="top-wrap" v-bind:class="{sign: userInfo.id}">
         <h2 class="board-title">
             <span>{{ menuHeader[selectedMenuId] }}</span>
         </h2>
-        <button type="button" class="green-button login-button" v-bind:class="{hide: userInfo}" v-on:click="redirect">Github Login</button>
-        <div class="user-info" v-bind:class="{hide: !userInfo}">
-            <span><strong>admin</strong>님, 안녕하세요.</span>
+        <button type="button" class="green-button login-button" v-bind:class="{hide: userInfo.id}" v-on:click="redirect">Github Login</button>
+        <div class="user-info" v-bind:class="{hide: !userInfo.id}">
+            <span><strong>userInfo.id</strong>님, 안녕하세요.</span>
             <button type="button" class="logout-button">Logout</button>
         </div>
     </div>
