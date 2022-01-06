@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         redirect() {
-            return (window.location.href = 'http://ec2-3-38-117-47.ap-northeast-2.compute.amazonaws.com:8090/oauth2/authorization/github');
+            return (window.location.href = process.env.AWS_API_URL);
         }
     }
 };
