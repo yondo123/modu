@@ -1,6 +1,6 @@
 <template>
-    <!-- signed -> 로그인, unsign -> 비 로그인 -->
-    <div class="top-wrap" v-bind:class="{sign: isLogin}">
+    <!-- signed -> 로그인, unsign -> 비 로그인 {sign: isLogin}-->
+    <div class="top-wrap" v-bind:class="[isLogin ? 'sign' : 'unsign']">
         <h2 class="board-title">
             <span>{{ menuHeader[selectedMenuId] }}</span>
         </h2>
