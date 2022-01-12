@@ -44,7 +44,7 @@
             </button>
         </header>
 
-        <nav v-bind:class="{hide: this.$store.state.style.mobile && !this.menuOpen}">
+        <nav v-bind:class="{hide: $isMobile() && !this.menuOpen}">
             <ul>
                 <!-- selected-menu -->
                 <li v-for="(item, index) in this.menuList" :key="index">
