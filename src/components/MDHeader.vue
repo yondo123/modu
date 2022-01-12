@@ -44,7 +44,7 @@
             </button>
         </header>
 
-        <nav v-bind:class="{hide: $isMobile() && !this.menuOpen}">
+        <nav v-bind:class="[$isMobile() && !this.menuOpen ? 'hidden-menu' : 'open-menu']">
             <ul>
                 <!-- selected-menu -->
                 <li v-for="(item, index) in this.menuList" :key="index">
@@ -64,6 +64,13 @@ export default {
         return {
             menuOpen: false
         };
+    },
+    created() {
+        this.$store.dispatch('style/requestMenuList');
+        window.addEventListener('resize', this.detectMobile);
+    },
+    unmounted() {
+        window.addEventListener('resize', this.detectMobile);
     },
     computed: {
         ...mapGetters('style', {menuList: 'getMenuList'}),
@@ -88,10 +95,10 @@ export default {
         },
         isActiveMenu(menuId) {
             return menuId === this.selectedMenuId ? 'active-menu' : '';
+        },
+        detectMobile() {
+            return this.$isMobile() ? (this.menuOpen = false) : (this.menuOpen = true);
         }
-    },
-    created() {
-        this.$store.dispatch('style/requestMenuList');
     }
 };
 </script>
@@ -100,6 +107,14 @@ export default {
 .modu {
     font-family: 'Mochiy Pop P One', sans-serif;
     max-width: 100vw;
+}
+
+.hidden-menu {
+    display: none;
+}
+
+.open-menu {
+    display: block;
 }
 
 .left-wrap {
