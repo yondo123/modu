@@ -84,6 +84,7 @@ main {
 }
 
 .board-list li a {
+    min-height: 5.2rem;
     display: flex;
     justify-content: left;
 }
