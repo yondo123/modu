@@ -6,7 +6,7 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
  * @returns {Promise}
  */
 const getMenuList = function () {
-    return axios.get(`${PROXY_URL}/category/list`);
+    return axios.get(`${PROXY_URL}/lecture/findAllList/?option=lectureHoneyAvg&page=1`);
 };
 
 /**
